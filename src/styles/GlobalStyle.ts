@@ -2,7 +2,7 @@ import { createGlobalStyle } from 'styled-components';
 import theme from './theme';
 
 // destructured theme properties
-const { mediaQueries } = theme;
+const { fonts, mediaQueries } = theme;
 
 const GlobalStyle = createGlobalStyle`
   html {
@@ -15,7 +15,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   body {
-    /* add custom font-family here */
+    font-family: ${fonts.arial};
     line-height: 1;
   }
 
@@ -30,10 +30,18 @@ const GlobalStyle = createGlobalStyle`
     padding: 0;
   }
 
+  button {
+	  cursor: pointer;
+
+    &:disabled {
+      cursor: default;
+    }
+  }
+
   button,
   input,
   textarea {
-    /* add custom font-family here */
+    font-family: ${fonts.arial};
   }
 
   img,

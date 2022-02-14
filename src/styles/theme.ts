@@ -19,19 +19,16 @@ const theme = {
 		white: '#fff',
 		black: '#000'
 	},
-	greys: {
-		// add any greys here
-	},
 	colors: {
-		primary: {
-			// add primary colors here
-		},
-		secondary: {
-			// add secondary colors here
-		}
+		offBlack: '#20222b', // blackRussian
+		darkBlue: '#333745', // blackRock
+		blue: '#3c4251', // rhino
+		lightBlue: '#464b5e', // blueZodiac
+		offWhite: '#a5afd7', // lightSteelBlue
+		purple: '#8357c5' // amethyst
 	},
 	fonts: {
-		// add font-families here
+		arial: 'Arial, Helvetica, sans-serif'
 	},
 	fontWeights: {
 		thin: 100,
@@ -44,11 +41,11 @@ const theme = {
 		extraBold: 800,
 		black: 900
 	},
-	fontSizes: {
-		// add font sizes here
-	},
-	spacing: {
-		// add spacing variables here
+	sizes: {
+		sizeSmall: '1.25rem',
+		sizeMedium: '1.5rem',
+		sizeLarge: '3.25rem',
+		sizeXtraLarge: '4.75rem'
 	}
 };
 
