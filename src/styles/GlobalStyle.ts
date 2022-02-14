@@ -2,7 +2,7 @@ import { createGlobalStyle } from 'styled-components';
 import theme from './theme';
 
 // destructured theme properties
-const { colors, fontSizes, fontWeights, fonts, greys, mediaQueries, shades, spacing } = theme;
+const { mediaQueries } = theme;
 
 const GlobalStyle = createGlobalStyle`
   html {
