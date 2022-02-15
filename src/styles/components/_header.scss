@@ -1,0 +1,22 @@
+.header {
+	background-color: $offBlack;
+	color: $white;
+	margin-bottom: $xtraLargeSize;
+	padding: $mediumSize 0;
+
+	@media #{$desktopBreakpoint} {
+		margin-bottom: 2rem;
+	}
+
+	&__title {
+		font-size: $largeSize;
+		margin: 0;
+	}
+
+	&__subtitle {
+		color: $offWhite;
+		font-size: $mediumSize;
+		font-weight: 500;
+		margin: 0;
+	}
+}

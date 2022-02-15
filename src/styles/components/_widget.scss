@@ -1,0 +1,29 @@
+.widget {
+	background-color: $lightBlue;
+	margin-bottom: $xtraLargeSize;
+
+	// &__inner {
+	// }
+
+	&__header {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		background-color: $blue;
+		color: $offWhite;
+		padding: $mediumSize;
+	}
+
+	&__title {
+		margin: 0;
+	}
+
+	// styles for "Please add an option to get started!" text
+	&__message {
+		border-bottom: 2px solid lighten($lightBlue, 10%);
+		color: $offWhite;
+		margin: 0;
+		padding: $largeSize;
+		text-align: center;
+	}
+}

@@ -1,0 +1,19 @@
+.option {
+	margin: 0;
+	padding: 0;
+
+	&__item {
+		display: flex;
+		justify-content: space-between;
+		padding: $largeSize $mediumSize;
+		border-bottom: 2px solid lighten($lightBlue, 10%);
+	}
+
+	&__text {
+		color: $white;
+		font-weight: 500;
+		font-size: 2rem;
+		margin: 0;
+		word-break: break-all;
+	}
+}

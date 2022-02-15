@@ -1,0 +1,38 @@
+.add-option {
+	&__error {
+		color: $offWhite;
+		font-style: italic;
+		margin: $mediumSize 0 0 0;
+		padding: 0 $mediumSize;
+	}
+
+	&__form {
+		display: flex;
+		padding: $mediumSize;
+
+		@media #{$desktopBreakpoint} {
+			flex-wrap: wrap;
+		}
+	}
+
+	&__input {
+		background-color: $darkBlue;
+		border: none;
+		border-bottom: 0.3rem solid darken($darkBlue, 10%);
+		color: $offWhite;
+		flex: 1;
+		padding: $smallSize;
+		margin-right: $smallSize;
+
+		@media #{$desktopBreakpoint} {
+			margin-right: 0;
+		}
+	}
+
+	&__button {
+		@media #{$desktopBreakpoint} {
+			margin-top: $smallSize;
+			width: 100%;
+		}
+	}
+}

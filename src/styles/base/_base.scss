@@ -1,0 +1,23 @@
+html {
+	font-size: 62.5%;
+}
+
+body {
+	background-color: $darkBlue;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: $mediumSize;
+}
+
+button {
+	cursor: pointer;
+
+	&:disabled {
+		cursor: default;
+	}
+}
+
+ul,
+ol,
+li {
+	list-style: none;
+}
