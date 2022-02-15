@@ -1,5 +1,8 @@
 import React from 'react';
 
+// styled components
+import * as S from './styles';
+
 // props
 type ActionProps = {
 	hasOptions: boolean;
@@ -8,9 +11,9 @@ type ActionProps = {
 
 const Action = ({ hasOptions, pickOption }: ActionProps) => (
 	<div>
-		<button className='big-button' disabled={!hasOptions} onClick={pickOption} type='button'>
+		<S.Button disabled={!hasOptions} onClick={pickOption} type='button'>
 			What should I do?
-		</button>
+		</S.Button>
 	</div>
 );
 

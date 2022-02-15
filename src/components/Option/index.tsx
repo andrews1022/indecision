@@ -1,5 +1,8 @@
 import React from 'react';
 
+// styled components
+import * as S from './styles';
+
 // props
 type OptionProps = {
 	count: any;
@@ -9,15 +12,15 @@ type OptionProps = {
 };
 
 const Option = ({ count, deleteOption, optionText }: OptionProps) => (
-	<li className='option__item'>
-		<p className='option__text'>
+	<S.OptionItem>
+		<S.OptionText>
 			{count}. {optionText}
-		</p>
+		</S.OptionText>
 
-		<button className='button button--link' onClick={() => deleteOption(optionText)} type='button'>
+		<S.Button onClick={() => deleteOption(optionText)} type='button'>
 			Remove
-		</button>
-	</li>
+		</S.Button>
+	</S.OptionItem>
 );
 
 export default Option;

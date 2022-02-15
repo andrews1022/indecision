@@ -7,6 +7,10 @@ import Header from '../Header';
 import OptionModal from '../OptionModal';
 import Options from '../Options';
 
+// styled components
+import { Container } from '../UI/Container';
+import { Widget } from '../UI/Widget';
+
 // custom hooks
 import usePrevious from '../../hooks/usePrevious';
 
@@ -105,13 +109,13 @@ const App = () => {
 	};
 
 	return (
-		<div>
+		<>
 			<Header subtitle='Put your life in the hands of a computer!' title='Indecision' />
 
-			<div className='container'>
+			<Container>
 				<Action hasOptions={state.options.length > 0} pickOption={pickOption} />
 
-				<div className='widget'>
+				<Widget>
 					<Options
 						deleteOption={deleteOption}
 						deleteOptions={deleteOptions}
@@ -119,14 +123,14 @@ const App = () => {
 					/>
 
 					<AddOption addOption={addOption} error={state.error} />
-				</div>
-			</div>
+				</Widget>
+			</Container>
 
 			<OptionModal
 				clearSelectedOption={clearSelectedOption}
 				selectedOption={state.selectedOption}
 			/>
-		</div>
+		</>
 	);
 };
 

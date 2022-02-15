@@ -1,5 +1,7 @@
 import React, { useEffect } from 'react';
-import Modal from 'react-modal';
+
+// styled components
+import * as S from './styles';
 
 // props
 type OptionModalProps = {
@@ -10,25 +12,24 @@ type OptionModalProps = {
 const OptionModal = ({ clearSelectedOption, selectedOption }: OptionModalProps) => {
 	// this is recommended as per react-modal docs
 	useEffect(() => {
-		Modal.setAppElement('body');
+		S.StyledModal.setAppElement('body');
 	}, []);
 
 	return (
-		<Modal
-			className='modal'
+		<S.StyledModal
 			closeTimeoutMS={200}
 			contentLabel='Selected Option'
 			isOpen={!!selectedOption}
 			onRequestClose={clearSelectedOption}
 		>
-			<h3 className='modal__title'>Selected Option</h3>
+			<S.Title>Selected Option</S.Title>
 
-			{selectedOption ? <p className='modal__text'>{selectedOption}</p> : null}
+			{selectedOption ? <S.Text>{selectedOption}</S.Text> : null}
 
-			<button className='modal__button button' onClick={clearSelectedOption} type='button'>
+			<S.Button onClick={clearSelectedOption} type='button'>
 				Close
-			</button>
-		</Modal>
+			</S.Button>
+		</S.StyledModal>
 	);
 };
 
