@@ -1,4 +1,8 @@
-import React, { useEffect, useState, type FormEvent } from 'react';
+import React, { useEffect, useState, useReducer, type FormEvent } from 'react';
+
+// context
+import DeciderContext from '../../context/DeciderContext';
+import { deciderReducer, initialDeciderState } from '../../reducer/deciderReducer';
 
 // components
 import Action from '../Action';
@@ -22,6 +26,8 @@ type State = {
 };
 
 const App = () => {
+	const [state2, dispatch] = useReducer(deciderReducer, initialDeciderState);
+
 	// state
 	const initialState = {
 		error: '',
@@ -51,14 +57,6 @@ const App = () => {
 			localStorage.setItem('options', JSON.stringify(state.options));
 		}
 	}, [state.options]);
-
-	// pick a random option
-	const pickOption = () => {
-		const randomIndex = Math.floor(Math.random() * state.options.length);
-		const randomOption = state.options[randomIndex];
-
-		setState({ ...state, selectedOption: randomOption });
-	};
 
 	// delete a single option
 	const deleteOption = (optionToRemove: string) => {
@@ -109,11 +107,12 @@ const App = () => {
 	};
 
 	return (
-		<>
-			<Header subtitle='Put your life in the hands of a computer!' title='Indecision' />
+		// eslint-disable-next-line react/jsx-no-constructed-context-values
+		<DeciderContext.Provider value={{ deciderState: state2, deciderDispatch: dispatch }}>
+			<Header />
 
 			<Container>
-				<Action hasOptions={state.options.length > 0} pickOption={pickOption} />
+				<Action hasOptions={state.options.length > 0} />
 
 				<Widget>
 					<Options
@@ -130,7 +129,7 @@ const App = () => {
 				clearSelectedOption={clearSelectedOption}
 				selectedOption={state.selectedOption}
 			/>
-		</>
+		</DeciderContext.Provider>
 	);
 };
 

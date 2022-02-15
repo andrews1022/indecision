@@ -4,18 +4,12 @@ import React from 'react';
 import * as S from './styles';
 import { Container } from '../UI/Container';
 
-// props
-type HeaderProps = {
-	subtitle?: string;
-	title: string;
-};
-
-const Header = ({ subtitle, title }: HeaderProps) => (
+const Header = () => (
 	<S.Header>
 		<Container>
-			<S.Title>{title}</S.Title>
+			<S.Title>Indecision</S.Title>
 
-			{subtitle ? <S.SubTitle>{subtitle}</S.SubTitle> : null}
+			<S.SubTitle>Put your life in the hands of a computer!</S.SubTitle>
 		</Container>
 	</S.Header>
 );
