@@ -1,13 +1,23 @@
 import React from 'react';
 
-type Props = {};
-
-const Option = (props: Props) => {
-	return (
-		<div>
-			<h2>Option Component</h2>
-		</div>
-	);
+// props
+type OptionProps = {
+	count: any;
+	// eslint-disable-next-line no-unused-vars
+	deleteOption: (optionToRemove: any) => void;
+	optionText: any;
 };
+
+const Option = ({ count, deleteOption, optionText }: OptionProps) => (
+	<li className='option__item'>
+		<p className='option__text'>
+			{count}. {optionText}
+		</p>
+
+		<button className='button button--link' onClick={() => deleteOption(optionText)} type='button'>
+			Remove
+		</button>
+	</li>
+);
 
 export default Option;

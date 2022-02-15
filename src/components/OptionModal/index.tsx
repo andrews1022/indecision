@@ -1,12 +1,34 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import Modal from 'react-modal';
 
-type Props = {};
+// props
+type OptionModalProps = {
+	clearSelectedOption: () => void;
+	selectedOption: string;
+};
 
-const OptionModal = (props: Props) => {
+const OptionModal = ({ clearSelectedOption, selectedOption }: OptionModalProps) => {
+	// this is recommended as per react-modal docs
+	useEffect(() => {
+		Modal.setAppElement('body');
+	}, []);
+
 	return (
-		<div>
-			<h2>OptionModal Component</h2>
-		</div>
+		<Modal
+			className='modal'
+			closeTimeoutMS={200}
+			contentLabel='Selected Option'
+			isOpen={!!selectedOption}
+			onRequestClose={clearSelectedOption}
+		>
+			<h3 className='modal__title'>Selected Option</h3>
+
+			{selectedOption ? <p className='modal__text'>{selectedOption}</p> : null}
+
+			<button className='modal__button button' onClick={clearSelectedOption} type='button'>
+				Close
+			</button>
+		</Modal>
 	);
 };
 
