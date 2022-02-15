@@ -1,4 +1,4 @@
-import React, { type FormEvent, useEffect, useState } from 'react';
+import React, { useEffect, useState, type FormEvent } from 'react';
 
 // components
 import Action from '../Action';
