@@ -1,5 +1,8 @@
 import React, { type FormEvent } from 'react';
 
+// styled components
+import * as S from './styles';
+
 // props
 type AddOptionProps = {
 	// eslint-disable-next-line no-unused-vars
@@ -8,17 +11,15 @@ type AddOptionProps = {
 };
 
 const AddOption = ({ addOption, error }: AddOptionProps) => (
-	<div className='add-option'>
-		{error ? <p className='add-option__error'>{error}</p> : null}
+	<S.Wrapper>
+		{error ? <S.Error>{error}</S.Error> : null}
 
-		<form className='add-option__form' onSubmit={addOption}>
-			<input className='add-option__input' type='text' name='option' />
+		<S.Form onSubmit={addOption}>
+			<S.Input type='text' name='option' />
 
-			<button className='add-option__button button' type='submit'>
-				Add Option
-			</button>
-		</form>
-	</div>
+			<S.Button type='submit'>Add Option</S.Button>
+		</S.Form>
+	</S.Wrapper>
 );
 
 export default AddOption;

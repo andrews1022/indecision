@@ -1,5 +1,9 @@
 import React from 'react';
 
+// styled components
+import * as S from './styles';
+import { Container } from '../UI/Container';
+
 // props
 type HeaderProps = {
 	subtitle?: string;
@@ -7,12 +11,13 @@ type HeaderProps = {
 };
 
 const Header = ({ subtitle, title }: HeaderProps) => (
-	<header className='header'>
-		<div className='container'>
-			<h1 className='header__title'>{title}</h1>
-			{subtitle ? <h2 className='header__subtitle'>{subtitle}</h2> : null}
-		</div>
-	</header>
+	<S.Header>
+		<Container>
+			<S.Title>{title}</S.Title>
+
+			{subtitle ? <S.SubTitle>{subtitle}</S.SubTitle> : null}
+		</Container>
+	</S.Header>
 );
 
 export default Header;

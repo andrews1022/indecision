@@ -2,7 +2,7 @@ import { createGlobalStyle } from 'styled-components';
 import theme from './theme';
 
 // destructured theme properties
-const { fonts, mediaQueries } = theme;
+const { colors, fonts, mediaQueries } = theme;
 
 const GlobalStyle = createGlobalStyle`
   html {
@@ -15,6 +15,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   body {
+    background-color: ${colors.darkBlue};
     font-family: ${fonts.arial};
     line-height: 1;
   }
@@ -97,6 +98,28 @@ const GlobalStyle = createGlobalStyle`
     display: inline-block;
     max-width: 100%;
     zoom: 1;
+  }
+
+  /* react modal styling resets/adjustments */
+  .ReactModalPortal {
+    & > div {
+      opacity: 0;
+    }
+
+    .ReactModal__Overlay {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 200ms ease-in-out;
+
+      &--after-open {
+        opacity: 1;
+      }
+    
+      &--before-close {
+        opacity: 0;
+      }
+    }
   }
 `;
 
