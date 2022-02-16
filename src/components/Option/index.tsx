@@ -1,26 +1,36 @@
-import React from 'react';
+import React, { useContext } from 'react';
+
+// context
+import DeciderContext from '../../context/DeciderContext';
 
 // styled components
 import * as S from './styles';
 
 // props
 type OptionProps = {
-	count: any;
-	// eslint-disable-next-line no-unused-vars
-	deleteOption: (optionToRemove: any) => void;
-	optionText: any;
+	count: number;
+	option: string;
 };
 
-const Option = ({ count, deleteOption, optionText }: OptionProps) => (
-	<S.OptionItem>
-		<S.OptionText>
-			{count}. {optionText}
-		</S.OptionText>
+const Option = ({ count, option }: OptionProps) => {
+	const deciderContext = useContext(DeciderContext);
 
-		<S.Button onClick={() => deleteOption(optionText)} type='button'>
-			Remove
-		</S.Button>
-	</S.OptionItem>
-);
+	// event functions
+	const deleteSingleOptionHandler = (optionToDelete: string) => {
+		deciderContext.deciderDispatch({ type: 'DELETE_SINGLE_OPTION', payload: optionToDelete });
+	};
+
+	return (
+		<S.OptionItem>
+			<S.OptionText>
+				{count}. {option}
+			</S.OptionText>
+
+			<S.Button onClick={() => deleteSingleOptionHandler(option)} type='button'>
+				Remove
+			</S.Button>
+		</S.OptionItem>
+	);
+};
 
 export default Option;

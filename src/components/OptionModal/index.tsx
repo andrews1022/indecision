@@ -1,15 +1,19 @@
-import React, { useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
+
+// context
+import DeciderContext from '../../context/DeciderContext';
 
 // styled components
 import * as S from './styles';
 
-// props
-type OptionModalProps = {
-	clearSelectedOption: () => void;
-	selectedOption: string;
-};
+const OptionModal = () => {
+	const deciderContext = useContext(DeciderContext);
 
-const OptionModal = ({ clearSelectedOption, selectedOption }: OptionModalProps) => {
+	// event functions
+	const clearSelectedOptionHandler = () => {
+		deciderContext.deciderDispatch({ type: 'CLEAR_SELECTED_OPTION' });
+	};
+
 	// this is recommended as per react-modal docs
 	useEffect(() => {
 		S.StyledModal.setAppElement('body');
@@ -19,14 +23,16 @@ const OptionModal = ({ clearSelectedOption, selectedOption }: OptionModalProps) 
 		<S.StyledModal
 			closeTimeoutMS={200}
 			contentLabel='Selected Option'
-			isOpen={!!selectedOption}
-			onRequestClose={clearSelectedOption}
+			isOpen={!!deciderContext.deciderState.selectedOption}
+			onRequestClose={clearSelectedOptionHandler}
 		>
 			<S.Title>Selected Option</S.Title>
 
-			{selectedOption ? <S.Text>{selectedOption}</S.Text> : null}
+			{deciderContext.deciderState.selectedOption ? (
+				<S.Text>{deciderContext.deciderState.selectedOption}</S.Text>
+			) : null}
 
-			<S.Button onClick={clearSelectedOption} type='button'>
+			<S.Button onClick={clearSelectedOptionHandler} type='button'>
 				Close
 			</S.Button>
 		</S.StyledModal>
