@@ -5,31 +5,35 @@ import DeciderContext from '../../context/DeciderContext';
 
 // styled components
 import * as S from './styles';
+import { Button } from '../UI/Button';
 
 const AddOption = () => {
 	const deciderContext = useContext(DeciderContext);
 
+	// destructure state fields for cleaner jsx
+	const { error, options } = deciderContext.deciderState;
+
 	// event functions
-	const addOptionHandler = (event: FormEvent<HTMLFormElement>) => {
+	const addOptionHandler = (event: FormEvent<HTMLFormElement>): false | void => {
 		event.preventDefault();
 
 		const formElements = Array.from((event.target as HTMLFormElement).elements);
 		const input = formElements[0] as HTMLInputElement;
 		const inputValue = input.value;
 
+		const falsyValueMessage = 'Enter a valid value';
+		const duplicateValueMessage = 'This option already exists';
+
 		// check if falsy value
 		if (!inputValue) {
-			deciderContext.deciderDispatch({ type: 'SET_ERROR_MESSAGE', payload: 'Enter a valid value' });
+			deciderContext.deciderDispatch({ type: 'SET_ERROR_MESSAGE', payload: falsyValueMessage });
 
 			return false;
 		}
 
 		// check for duplicate
-		if (deciderContext.deciderState.options.indexOf(inputValue) > -1) {
-			deciderContext.deciderDispatch({
-				type: 'SET_ERROR_MESSAGE',
-				payload: 'This option already exists'
-			});
+		if (options.indexOf(inputValue) > -1) {
+			deciderContext.deciderDispatch({ type: 'SET_ERROR_MESSAGE', payload: duplicateValueMessage });
 
 			return false;
 		}
@@ -42,14 +46,16 @@ const AddOption = () => {
 
 	return (
 		<S.Wrapper>
-			{deciderContext.deciderState.error ? (
-				<S.Error>{deciderContext.deciderState.error}</S.Error>
-			) : null}
+			{error ? <S.Error>{error}</S.Error> : null}
 
 			<S.Form onSubmit={addOptionHandler}>
 				<S.Input type='text' name='option' />
 
-				<S.Button type='submit'>Add Option</S.Button>
+				<S.ButtonWrapper>
+					<Button backgroundColor='purple' color='white' type='submit'>
+						Add Option
+					</Button>
+				</S.ButtonWrapper>
 			</S.Form>
 		</S.Wrapper>
 	);

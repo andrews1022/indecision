@@ -5,9 +5,13 @@ import DeciderContext from '../../context/DeciderContext';
 
 // styled components
 import * as S from './styles';
+import { Button } from '../UI/Button';
 
 const OptionModal = () => {
 	const deciderContext = useContext(DeciderContext);
+
+	// destructure state fields for cleaner jsx
+	const { selectedOption } = deciderContext.deciderState;
 
 	// event functions
 	const clearSelectedOptionHandler = () => {
@@ -23,18 +27,21 @@ const OptionModal = () => {
 		<S.StyledModal
 			closeTimeoutMS={200}
 			contentLabel='Selected Option'
-			isOpen={!!deciderContext.deciderState.selectedOption}
+			isOpen={!!selectedOption}
 			onRequestClose={clearSelectedOptionHandler}
 		>
-			<S.Title>Selected Option</S.Title>
+			<S.Title>Selected Option:</S.Title>
 
-			{deciderContext.deciderState.selectedOption ? (
-				<S.Text>{deciderContext.deciderState.selectedOption}</S.Text>
-			) : null}
+			{selectedOption ? <S.Text>{selectedOption}</S.Text> : null}
 
-			<S.Button onClick={clearSelectedOptionHandler} type='button'>
+			<Button
+				backgroundColor='purple'
+				color='white'
+				onClick={clearSelectedOptionHandler}
+				type='button'
+			>
 				Close
-			</S.Button>
+			</Button>
 		</S.StyledModal>
 	);
 };

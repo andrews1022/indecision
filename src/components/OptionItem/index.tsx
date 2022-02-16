@@ -5,6 +5,7 @@ import DeciderContext from '../../context/DeciderContext';
 
 // styled components
 import * as S from './styles';
+import { Button } from '../UI/Button';
 
 // props
 type OptionProps = {
@@ -12,7 +13,7 @@ type OptionProps = {
 	option: string;
 };
 
-const Option = ({ count, option }: OptionProps) => {
+const OptionItem = ({ count, option }: OptionProps) => {
 	const deciderContext = useContext(DeciderContext);
 
 	// event functions
@@ -21,16 +22,21 @@ const Option = ({ count, option }: OptionProps) => {
 	};
 
 	return (
-		<S.OptionItem>
-			<S.OptionText>
+		<>
+			<S.Text>
 				{count}. {option}
-			</S.OptionText>
+			</S.Text>
 
-			<S.Button onClick={() => deleteSingleOptionHandler(option)} type='button'>
+			<Button
+				backgroundColor='blue'
+				color='offWhite'
+				onClick={() => deleteSingleOptionHandler(option)}
+				type='button'
+			>
 				Remove
-			</S.Button>
-		</S.OptionItem>
+			</Button>
+		</>
 	);
 };
 
-export default Option;
+export default OptionItem;

@@ -1,20 +1,17 @@
 import styled from 'styled-components';
 
-export const Button = styled.button`
-	background-color: ${(props) => props.theme.colors.purple};
-	border: none;
-	color: ${(props) => props.theme.shades.white};
-	font-size: ${(props) => props.theme.sizes.sizeLarge};
-	font-weight: bold;
-	margin-bottom: ${(props) => props.theme.sizes.sizeXtraLarge};
-	padding: 2.5rem;
-	width: 100%;
+export const Wrapper = styled.div`
+	margin-bottom: ${({ theme }) => theme.sizes.sizeXtraLarge};
 
-	&:disabled {
-		opacity: 0.5;
+	@media ${({ theme }) => theme.mediaQueries.mobileLarge} {
+		margin-bottom: 2rem;
 	}
 
-	@media ${(props) => props.theme.mediaQueries.mobileLarge} {
-		margin-bottom: 2rem;
+	button {
+		width: 100%;
+
+		&:disabled {
+			opacity: 0.5;
+		}
 	}
 `;

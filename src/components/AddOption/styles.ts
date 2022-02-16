@@ -3,43 +3,37 @@ import styled from 'styled-components';
 export const Wrapper = styled.div``;
 
 export const Error = styled.p`
-	color: ${(props) => props.theme.colors.offWhite};
+	color: ${({ theme }) => theme.colors.offWhite};
 	font-style: italic;
-	margin: ${(props) => props.theme.sizes.sizeMedium};
-	padding: 0 ${(props) => props.theme.sizes.sizeMedium};
+	margin: ${({ theme }) => theme.sizes.sizeMedium};
+	padding: 0 ${({ theme }) => theme.sizes.sizeMedium};
 `;
 
 export const Form = styled.form`
 	display: flex;
-	padding: ${(props) => props.theme.sizes.sizeMedium};
+	padding: ${({ theme }) => theme.sizes.sizeMedium};
 
-	@media ${(props) => props.theme.mediaQueries.mobileLarge} {
+	@media ${({ theme }) => theme.mediaQueries.mobileLarge} {
 		flex-wrap: wrap;
 	}
 `;
 
 export const Input = styled.input`
-	background-color: ${(props) => props.theme.colors.darkBlue};
+	background-color: ${({ theme }) => theme.colors.darkBlue};
 	border: none;
-	color: ${(props) => props.theme.colors.offWhite};
+	color: ${({ theme }) => theme.colors.offWhite};
 	flex: 1;
-	padding: ${(props) => props.theme.sizes.sizeSmall};
-	margin-right: ${(props) => props.theme.sizes.sizeSmall};
+	padding: ${({ theme }) => theme.sizes.sizeSmall};
+	margin-right: ${({ theme }) => theme.sizes.sizeSmall};
 
-	@media ${(props) => props.theme.mediaQueries.mobileLarge} {
+	@media ${({ theme }) => theme.mediaQueries.mobileLarge} {
 		margin-right: 0;
 	}
 `;
 
-export const Button = styled.button`
-	background-color: ${(props) => props.theme.colors.purple};
-	border: none;
-	color: ${(props) => props.theme.shades.white};
-	font-weight: ${(props) => props.theme.fontWeights.medium};
-	padding: ${(props) => props.theme.sizes.sizeSmall};
-
-	@media ${(props) => props.theme.mediaQueries.mobileLarge} {
-		margin-top: ${(props) => props.theme.sizes.sizeSmall};
+export const ButtonWrapper = styled.div`
+	@media ${({ theme }) => theme.mediaQueries.mobileLarge} {
+		margin-top: ${({ theme }) => theme.sizes.sizeSmall};
 		width: 100%;
 	}
 `;

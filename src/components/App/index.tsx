@@ -9,7 +9,7 @@ import Action from '../Action';
 import AddOption from '../AddOption';
 import Header from '../Header';
 import OptionModal from '../OptionModal';
-import Options from '../Options';
+import OptionsList from '../OptionsList';
 
 // styled components
 import { Container } from '../UI/Container';
@@ -21,14 +21,17 @@ import usePrevious from '../../hooks/usePrevious';
 const App = () => {
 	const [state, dispatch] = useReducer(deciderReducer, initialDeciderState);
 
+	// destructure state fields for cleaner code below
+	const { options } = state;
+
 	// equivalent of 'componentDidUpdate'
-	const previousValue = usePrevious(state.options.length);
+	const previousValue = usePrevious(options.length);
 
 	useEffect(() => {
-		if (previousValue !== state.options.length) {
-			localStorage.setItem('options', JSON.stringify(state.options));
+		if (previousValue !== options.length) {
+			localStorage.setItem('options', JSON.stringify(options));
 		}
-	}, [state]);
+	}, [options]);
 
 	return (
 		// eslint-disable-next-line react/jsx-no-constructed-context-values
@@ -39,7 +42,7 @@ const App = () => {
 				<Action />
 
 				<Widget>
-					<Options />
+					<OptionsList />
 
 					<AddOption />
 				</Widget>

@@ -5,11 +5,13 @@ import DeciderContext from '../../context/DeciderContext';
 
 // styled components
 import * as S from './styles';
+import { Button } from '../UI/Button';
 
 const Action = () => {
 	const deciderContext = useContext(DeciderContext);
 
-	const hasOptions = deciderContext.deciderState.options.length > 0;
+	// destructure state fields for cleaner jsx
+	const { options } = deciderContext.deciderState;
 
 	// event functions
 	const pickOptionHandler = () => {
@@ -17,9 +19,19 @@ const Action = () => {
 	};
 
 	return (
-		<S.Button disabled={!hasOptions} onClick={pickOptionHandler} type='button'>
-			What should I do?
-		</S.Button>
+		<S.Wrapper>
+			<Button
+				backgroundColor='purple'
+				color='white'
+				disabled={!options.length}
+				largeFontSize
+				largePadding
+				onClick={pickOptionHandler}
+				type='button'
+			>
+				What should I do?
+			</Button>
+		</S.Wrapper>
 	);
 };
 
