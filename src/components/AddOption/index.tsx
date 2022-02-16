@@ -1,4 +1,5 @@
-import React, { useContext, type FormEvent } from 'react';
+import React, { useContext } from 'react';
+import type { FormEvent } from 'react';
 
 // context
 import DeciderContext from '../../context/DeciderContext';
