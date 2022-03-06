@@ -19,38 +19,38 @@ import { Widget } from '../UI/Widget';
 import usePrevious from '../../hooks/usePrevious';
 
 const App = () => {
-	const [state, dispatch] = useReducer(deciderReducer, initialDeciderState);
+  const [state, dispatch] = useReducer(deciderReducer, initialDeciderState);
 
-	// destructure state fields for cleaner code below
-	const { options } = state;
+  // destructure state fields for cleaner code below
+  const { options } = state;
 
-	// equivalent of 'componentDidUpdate'
-	const previousValue = usePrevious(options.length);
+  // equivalent of 'componentDidUpdate'
+  const previousValue = usePrevious(options.length);
 
-	useEffect(() => {
-		if (previousValue !== options.length) {
-			localStorage.setItem('options', JSON.stringify(options));
-		}
-	}, [options]);
+  useEffect(() => {
+    if (previousValue !== options.length) {
+      localStorage.setItem('options', JSON.stringify(options));
+    }
+  }, [options]);
 
-	return (
-		// eslint-disable-next-line react/jsx-no-constructed-context-values
-		<DeciderContext.Provider value={{ deciderState: state, deciderDispatch: dispatch }}>
-			<Header />
+  return (
+    // eslint-disable-next-line react/jsx-no-constructed-context-values
+    <DeciderContext.Provider value={{ deciderState: state, deciderDispatch: dispatch }}>
+      <Header />
 
-			<Container>
-				<Action />
+      <Container>
+        <Action />
 
-				<Widget>
-					<OptionsList />
+        <Widget>
+          <OptionsList />
 
-					<AddOption />
-				</Widget>
-			</Container>
+          <AddOption />
+        </Widget>
+      </Container>
 
-			<OptionModal />
-		</DeciderContext.Provider>
-	);
+      <OptionModal />
+    </DeciderContext.Provider>
+  );
 };
 
 export default App;
