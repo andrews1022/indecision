@@ -1,18 +1,14 @@
-import React, { useContext } from 'react';
 import type { FormEvent } from 'react';
 
-// context
-import DeciderContext from '../../context/DeciderContext';
-
 // styled components
-import * as S from './styles';
+import * as S from './AddOption.styles';
 import { Button } from '../UI/Button';
 
-const AddOption = () => {
-  const deciderContext = useContext(DeciderContext);
+// custom hooks
+import useDecider from '../../hooks/useDecider';
 
-  // destructure state fields for cleaner jsx
-  const { error, options } = deciderContext.deciderState;
+const AddOption = () => {
+  const [state, dispatch] = useDecider();
 
   // event functions
   const addOptionHandler = (event: FormEvent<HTMLFormElement>): false | void => {
@@ -20,21 +16,21 @@ const AddOption = () => {
 
     const formElements = Array.from((event.target as HTMLFormElement).elements);
     const input = formElements[0] as HTMLInputElement;
-    const inputValue = input.value;
+    const { value } = input;
 
     const falsyValueMessage = 'Enter a valid value';
     const duplicateValueMessage = 'This option already exists';
 
     // check if falsy value
-    if (!inputValue) {
-      deciderContext.deciderDispatch({ type: 'SET_ERROR_MESSAGE', payload: falsyValueMessage });
+    if (!value) {
+      dispatch({ type: 'SET_ERROR_MESSAGE', payload: falsyValueMessage });
 
       return false;
     }
 
     // check for duplicate
-    if (options.indexOf(inputValue) > -1) {
-      deciderContext.deciderDispatch({ type: 'SET_ERROR_MESSAGE', payload: duplicateValueMessage });
+    if (state.options.indexOf(value) > -1) {
+      dispatch({ type: 'SET_ERROR_MESSAGE', payload: duplicateValueMessage });
 
       return false;
     }
@@ -42,12 +38,12 @@ const AddOption = () => {
     // clear the input
     input.value = '';
 
-    return deciderContext.deciderDispatch({ type: 'ADD_OPTION', payload: inputValue });
+    return dispatch({ type: 'ADD_OPTION', payload: value });
   };
 
   return (
     <S.Wrapper>
-      {error ? <S.Error>{error}</S.Error> : null}
+      {state.error ? <S.Error>{state.error}</S.Error> : null}
 
       <S.Form onSubmit={addOptionHandler}>
         <S.Input type='text' name='option' />

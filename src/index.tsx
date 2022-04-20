@@ -1,4 +1,4 @@
-import React, { StrictMode } from 'react';
+import { StrictMode } from 'react';
 import ReactDOM from 'react-dom';
 
 // styled components
@@ -7,7 +7,7 @@ import GlobalStyle from './styles/GlobalStyle';
 import theme from './styles/theme';
 
 // components
-import App from './components/App';
+import App from './components/App/App';
 
 ReactDOM.render(
   <StrictMode>

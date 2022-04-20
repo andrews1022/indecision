@@ -1,21 +1,18 @@
-import React, { useContext, useEffect } from 'react';
-
-// context
-import DeciderContext from '../../context/DeciderContext';
+import { useEffect } from 'react';
 
 // styled components
-import * as S from './styles';
+import * as S from './OptionModal.styles';
 import { Button } from '../UI/Button';
 
-const OptionModal = () => {
-  const deciderContext = useContext(DeciderContext);
+// custom hooks
+import useDecider from '../../hooks/useDecider';
 
-  // destructure state fields for cleaner jsx
-  const { selectedOption } = deciderContext.deciderState;
+const OptionModal = () => {
+  const [state, dispatch] = useDecider();
 
   // event functions
   const clearSelectedOptionHandler = () => {
-    deciderContext.deciderDispatch({ type: 'CLEAR_SELECTED_OPTION' });
+    dispatch({ type: 'CLEAR_SELECTED_OPTION' });
   };
 
   // this is recommended as per react-modal docs
@@ -27,12 +24,12 @@ const OptionModal = () => {
     <S.StyledModal
       closeTimeoutMS={200}
       contentLabel='Selected Option'
-      isOpen={!!selectedOption}
+      isOpen={!!state.selectedOption}
       onRequestClose={clearSelectedOptionHandler}
     >
       <S.Title>Selected Option:</S.Title>
 
-      {selectedOption ? <S.Text>{selectedOption}</S.Text> : null}
+      {state.selectedOption ? <S.Text>{state.selectedOption}</S.Text> : null}
 
       <Button
         backgroundColor='purple'

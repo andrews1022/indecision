@@ -1,24 +1,19 @@
-import React, { useContext } from 'react';
-
-// context
-import DeciderContext from '../../context/DeciderContext';
-
 // components
-import OptionItem from '../OptionItem';
+import OptionItem from '../OptionItem/OptionItem';
 
 // styled components
-import * as S from './styles';
+import * as S from './OptionsList.styles';
 import { Button } from '../UI/Button';
 
-const OptionsList = () => {
-  const deciderContext = useContext(DeciderContext);
+// custom hooks
+import useDecider from '../../hooks/useDecider';
 
-  // destructure state fields for cleaner jsx
-  const { options } = deciderContext.deciderState;
+const OptionsList = () => {
+  const [state, dispatch] = useDecider();
 
   // event functions
   const deleteAllOptionsHandler = () => {
-    deciderContext.deciderDispatch({ type: 'DELETE_ALL_OPTIONS' });
+    dispatch({ type: 'DELETE_ALL_OPTIONS' });
   };
 
   return (
@@ -36,10 +31,10 @@ const OptionsList = () => {
         </Button>
       </S.Header>
 
-      {options.length === 0 ? <S.Message>Please add an option to get started!</S.Message> : null}
+      {!state.options.length ? <S.Message>Please add an option to get started!</S.Message> : null}
 
       <S.List>
-        {options.map((option, index) => (
+        {state.options.map((option, index) => (
           <S.Item key={option}>
             <OptionItem count={index + 1} option={option} />
           </S.Item>

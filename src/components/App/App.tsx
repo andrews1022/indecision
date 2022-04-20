@@ -1,15 +1,15 @@
-import React, { useEffect, useReducer } from 'react';
+import { useEffect, useReducer } from 'react';
 
 // context
 import DeciderContext from '../../context/DeciderContext';
 import { deciderReducer, initialDeciderState } from '../../reducer/deciderReducer';
 
 // components
-import Action from '../Action';
-import AddOption from '../AddOption';
-import Header from '../Header';
-import OptionModal from '../OptionModal';
-import OptionsList from '../OptionsList';
+import Action from '../Action/Action';
+import AddOption from '../AddOption/AddOption';
+import Header from '../Header/Header';
+import OptionModal from '../OptionModal/OptionModal';
+import OptionsList from '../OptionsList/OptionsList';
 
 // styled components
 import { Container } from '../UI/Container';

@@ -1,8 +1,12 @@
 import styled from 'styled-components';
 
+// custom types
+import type { ThemeColor, ThemeShade } from '../../types/global';
+
+// props type
 type ButtonProps = {
-  backgroundColor: 'blue' | 'lightBlue' | 'purple';
-  color: 'offWhite' | 'white';
+  backgroundColor: ThemeColor;
+  color: ThemeColor | ThemeShade;
   largeFontSize?: boolean;
   largePadding?: boolean;
 };

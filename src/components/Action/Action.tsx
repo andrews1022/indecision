@@ -1,21 +1,16 @@
-import React, { useContext } from 'react';
-
-// context
-import DeciderContext from '../../context/DeciderContext';
-
 // styled components
-import * as S from './styles';
+import * as S from './Action.styles';
 import { Button } from '../UI/Button';
 
-const Action = () => {
-  const deciderContext = useContext(DeciderContext);
+// custom hooks
+import useDecider from '../../hooks/useDecider';
 
-  // destructure state fields for cleaner jsx
-  const { options } = deciderContext.deciderState;
+const Action = () => {
+  const [state, dispatch] = useDecider();
 
   // event functions
   const pickOptionHandler = () => {
-    deciderContext.deciderDispatch({ type: 'PICK_OPTION' });
+    dispatch({ type: 'PICK_OPTION' });
   };
 
   return (
@@ -23,7 +18,7 @@ const Action = () => {
       <Button
         backgroundColor='purple'
         color='white'
-        disabled={!options.length}
+        disabled={!state.options.length}
         largeFontSize
         largePadding
         onClick={pickOptionHandler}

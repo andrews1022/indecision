@@ -1,24 +1,22 @@
-import React, { useContext } from 'react';
-
-// context
-import DeciderContext from '../../context/DeciderContext';
-
 // styled components
-import * as S from './styles';
+import * as S from './OptionItem.styles';
 import { Button } from '../UI/Button';
 
-// props
+// custom hooks
+import useDecider from '../../hooks/useDecider';
+
+// props type
 type OptionProps = {
   count: number;
   option: string;
 };
 
 const OptionItem = ({ count, option }: OptionProps) => {
-  const deciderContext = useContext(DeciderContext);
+  const [state, dispatch] = useDecider();
 
   // event functions
   const deleteSingleOptionHandler = (optionToDelete: string) => {
-    deciderContext.deciderDispatch({ type: 'DELETE_SINGLE_OPTION', payload: optionToDelete });
+    dispatch({ type: 'DELETE_SINGLE_OPTION', payload: optionToDelete });
   };
 
   return (
