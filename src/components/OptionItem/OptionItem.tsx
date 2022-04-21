@@ -1,3 +1,6 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable @typescript-eslint/no-unused-vars */
+
 // styled components
 import * as S from './OptionItem.styles';
 import { Button } from '../UI/Button';
