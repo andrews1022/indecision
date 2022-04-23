@@ -2,7 +2,7 @@ import { useEffect, useReducer } from 'react';
 
 // context
 import DeciderContext from '../../context/DeciderContext';
-import { deciderReducer, initialDeciderState } from '../../reducer/deciderReducer';
+import { deciderReducer, initialDeciderState } from '../../reducers/deciderReducer';
 
 // components
 import Action from '../Action/Action';

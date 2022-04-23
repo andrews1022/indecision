@@ -1,8 +1,8 @@
 import { createContext } from 'react';
 import type { Dispatch } from 'react';
 
-import { initialDeciderState } from '../reducer/deciderReducer';
-import type { DeciderActions, DeciderState } from '../reducer/deciderReducer';
+import { initialDeciderState } from '../reducers/deciderReducer';
+import type { DeciderActions, DeciderState } from '../reducers/deciderReducer';
 
 type DeciderContextType = {
   deciderState: DeciderState;
