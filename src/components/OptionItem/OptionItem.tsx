@@ -1,12 +1,9 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable @typescript-eslint/no-unused-vars */
-
 // styled components
-import * as S from './OptionItem.styles';
-import { Button } from '../UI/Button';
+import * as S from "./OptionItem.styles";
+import { Button } from "../UI/Button";
 
 // custom hooks
-import useDecider from '../../hooks/useDecider';
+import useDecider from "../../hooks/useDecider";
 
 // props type
 type OptionProps = {
@@ -19,7 +16,7 @@ const OptionItem = ({ count, option }: OptionProps) => {
 
   // event functions
   const deleteSingleOptionHandler = (optionToDelete: string) => {
-    dispatch({ type: 'DELETE_SINGLE_OPTION', payload: optionToDelete });
+    dispatch({ type: "DELETE_SINGLE_OPTION", payload: optionToDelete });
   };
 
   return (
@@ -29,10 +26,10 @@ const OptionItem = ({ count, option }: OptionProps) => {
       </S.Text>
 
       <Button
-        backgroundColor='blue'
-        color='offWhite'
+        backgroundColor="blue"
+        color="offWhite"
         onClick={() => deleteSingleOptionHandler(option)}
-        type='button'
+        type="button"
       >
         Remove
       </Button>

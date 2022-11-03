@@ -1,7 +1,7 @@
 /* eslint-disable default-param-last */
 
 // utils
-import { getRandomArrayIndex } from '../utils/getRandomArrayIndex';
+import { getRandomArrayIndex } from "../utils/getRandomArrayIndex";
 
 export type DeciderState = {
   error: string;
@@ -10,24 +10,24 @@ export type DeciderState = {
 };
 
 export type DeciderActions =
-  | { type: 'ADD_OPTION'; payload: string }
-  | { type: 'CLEAR_SELECTED_OPTION' }
-  | { type: 'DELETE_ALL_OPTIONS' }
-  | { type: 'DELETE_SINGLE_OPTION'; payload: string }
-  | { type: 'PICK_OPTION' }
-  | { type: 'SET_ERROR_MESSAGE'; payload: string };
+  | { type: "ADD_OPTION"; payload: string }
+  | { type: "CLEAR_SELECTED_OPTION" }
+  | { type: "DELETE_ALL_OPTIONS" }
+  | { type: "DELETE_SINGLE_OPTION"; payload: string }
+  | { type: "PICK_OPTION" }
+  | { type: "SET_ERROR_MESSAGE"; payload: string };
 
 // use this function so localstorage is not reset on refresh
 const setOptions = (): [] => {
-  const localOptions = localStorage.getItem('options');
+  const localOptions = localStorage.getItem("options");
 
   return localOptions ? JSON.parse(localOptions) : [];
 };
 
 export const initialDeciderState: DeciderState = {
-  error: '',
+  error: "",
   options: setOptions(),
-  selectedOption: ''
+  selectedOption: ""
 };
 
 export const deciderReducer = (
@@ -35,43 +35,43 @@ export const deciderReducer = (
   action: DeciderActions
 ): DeciderState => {
   switch (action.type) {
-    case 'ADD_OPTION': {
+    case "ADD_OPTION": {
       return {
         ...state,
-        error: '',
+        error: "",
         options: [...state.options, action.payload]
       };
     }
 
-    case 'CLEAR_SELECTED_OPTION': {
+    case "CLEAR_SELECTED_OPTION": {
       return {
         ...state,
-        selectedOption: ''
+        selectedOption: ""
       };
     }
 
-    case 'DELETE_ALL_OPTIONS': {
+    case "DELETE_ALL_OPTIONS": {
       return {
         ...state,
         options: []
       };
     }
 
-    case 'DELETE_SINGLE_OPTION': {
+    case "DELETE_SINGLE_OPTION": {
       return {
         ...state,
         options: state.options.filter((option) => action.payload !== option)
       };
     }
 
-    case 'PICK_OPTION': {
+    case "PICK_OPTION": {
       return {
         ...state,
         selectedOption: state.options[getRandomArrayIndex(state.options)]
       };
     }
 
-    case 'SET_ERROR_MESSAGE': {
+    case "SET_ERROR_MESSAGE": {
       return {
         ...state,
         error: action.payload
@@ -79,9 +79,7 @@ export const deciderReducer = (
     }
 
     default: {
-      return {
-        ...state
-      };
+      return state;
     }
   }
 };

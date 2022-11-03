@@ -2,10 +2,10 @@
 // we use it to reference the previous state value...
 // ...because we don't get access to prevState as a function parameter in componentDidUpdate
 
-import { useEffect, useRef } from 'react';
-import type { MutableRefObject } from 'react';
+import { useEffect, useRef } from "react";
+import type { MutableRefObject } from "react";
 
-const usePrevious = <T>(value: T): MutableRefObject<T | undefined>['current'] => {
+const usePrevious = <T>(value: T): MutableRefObject<T | undefined>["current"] => {
   const ref = useRef<T>();
 
   useEffect(() => {

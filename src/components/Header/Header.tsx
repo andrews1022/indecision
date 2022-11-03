@@ -1,6 +1,6 @@
 // styled components
-import * as S from './Header.styles';
-import { Container } from '../UI/Container';
+import * as S from "./Header.styles";
+import { Container } from "../UI/Container";
 
 const Header = () => (
   <S.Header>

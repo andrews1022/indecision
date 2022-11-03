@@ -1,13 +1,13 @@
-import { StrictMode } from 'react';
-import ReactDOM from 'react-dom';
+import { StrictMode } from "react";
+import ReactDOM from "react-dom";
 
 // styled components
-import { ThemeProvider } from 'styled-components';
-import GlobalStyle from './styles/GlobalStyle';
-import theme from './styles/theme';
+import { ThemeProvider } from "styled-components";
+import GlobalStyle from "./styles/GlobalStyle";
+import theme from "./styles/theme";
 
 // components
-import App from './components/App/App';
+import App from "./components/App/App";
 
 ReactDOM.render(
   <StrictMode>
@@ -16,5 +16,5 @@ ReactDOM.render(
       <App />
     </ThemeProvider>
   </StrictMode>,
-  document.getElementById('root')
+  document.getElementById("root")
 );
